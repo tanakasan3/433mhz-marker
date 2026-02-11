@@ -23,25 +23,25 @@ difference() {
     
     // Face 1: +X side
     translate([side/2 - text_depth + 0.01, 0, height/2])
-        rotate([90, 0, 90])
+        rotate([90, -90, 90])
             linear_extrude(text_depth + 0.1)
                 text("433MHz", size=text_size, halign="center", valign="center", font="Liberation Sans:style=Bold");
     
     // Face 2: -X side
     translate([-(side/2 - text_depth + 0.01), 0, height/2])
-        rotate([90, 0, -90])
+        rotate([90, -90, -90])
             linear_extrude(text_depth + 0.1)
                 text("433MHz", size=text_size, halign="center", valign="center", font="Liberation Sans:style=Bold");
     
     // Face 3: +Y side
     translate([0, side/2 - text_depth + 0.01, height/2])
-        rotate([90, 0, 180])
+        rotate([90, -90, 180])
             linear_extrude(text_depth + 0.1)
                 text("433MHz", size=text_size, halign="center", valign="center", font="Liberation Sans:style=Bold");
     
     // Face 4: -Y side
     translate([0, -(side/2 - text_depth + 0.01), height/2])
-        rotate([90, 0, 0])
+        rotate([90, -90, 0])
             linear_extrude(text_depth + 0.1)
                 text("433MHz", size=text_size, halign="center", valign="center", font="Liberation Sans:style=Bold");
 }
