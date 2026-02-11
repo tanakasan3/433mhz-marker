@@ -10,11 +10,29 @@ hole_diameter = 4;  // Center hole diameter
 text_depth = 0.5;   // How deep the text is engraved
 text_size = 4;      // Font size
 label_text = "433"; // Text to engrave on faces
+edge_radius = 0.8;  // Radius for rounded edges
+
+// Module for rounded cube using hull of spheres at corners
+module rounded_cube(size, radius) {
+    sx = size[0];
+    sy = size[1];
+    sz = size[2];
+    hull() {
+        for (x = [-1, 1], y = [-1, 1], z = [-1, 1]) {
+            translate([
+                x * (sx/2 - radius),
+                y * (sy/2 - radius),
+                z * (sz/2 - radius)
+            ])
+            sphere(r = radius);
+        }
+    }
+}
 
 difference() {
-    // Main body - square prism centered at origin
+    // Main body - rounded square prism centered at origin
     translate([0, 0, height/2])
-        cube([side, side, height], center=true);
+        rounded_cube([side, side, height], edge_radius);
     
     // Center hole through the entire height
     translate([0, 0, -1])
